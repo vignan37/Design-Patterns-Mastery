@@ -32,6 +32,7 @@ Variations :
 
 // A basic counter
 
+/*
 let counterValue =0;
 
 class Counter{
@@ -62,9 +63,11 @@ console.log(a.getCount()); // this will return the value by the method
 const b = new Counter();
 
 console.log(a.getInstance() === b.getInstance()); // false because different instances
+*/
 
 
 // A singleton Counter
+
 let counterS = 0;
 let instance;
 
@@ -81,11 +84,11 @@ class SingletonCounter{
 	}
 
 	static getInstanceS(){
-		return this;
+		return instance;
 	}
 
 	getCounterS(){
-		return this.counterS;
+		return counterS;
 	}
 
 	incrementSCounter(){
@@ -102,5 +105,93 @@ class SingletonCounter{
 const counter1 = new SingletonCounter();
 const counter2 = new SingletonCounter();
 
-console.log(SingletonCounter.getInstanceS());
 // Error: You can only create one instance!
+
+counter1.incrementSCounter();
+
+const counter3 = SingletonCounter.getInstanceS();
+console.log(counter3.getCounterS());
+
+
+
+
+/*
+let instance;
+let counter = 0;
+
+class Counter {
+  constructor() {
+    if (instance) {
+      throw new Error("You can only create one instance!");
+    }
+    instance = this;
+  }
+
+  getInstance() {
+    return this;
+  }
+
+  getCount() {
+    return counter;
+  }
+
+  increment() {
+    return ++counter;
+  }
+
+  decrement() {
+    return --counter;
+  }
+}
+const inst = new Counter();
+inst.increment();
+console.log(inst.getCount());
+//const singletonCounter = Object.freeze(new Counter());
+//export default singletonCounter;
+
+*/
+
+
+/*
+
+Tradeoffs
+
+Restricting the instantiation to just one instance could potentially save a lot of *memory* space. 
+Instead of having to set up memory for a new instance each time, we only have to set up memory for that one instance, 
+which is referenced throughout the application.
+
+However, Singletons are actually considered an anti-pattern, and can (or.. should) be avoided in JavaScript.
+
+In many programming languages, such as Java or C++, it’s not possible to directly create objects the way we can in JavaScript. In those object-oriented programming languages, we need to create a class, which creates an object. That created object has the value of the instance of the class, just like the value of instance in the JavaScript example.
+
+However, the class implementation shown in the examples above is actually overkill. 
+Since we can directly create objects in JavaScript, we can simply use a regular object to achieve the exact same result. 
+Let’s cover some of the disadvantages of using Singletons!
+
+Using a regular object
+Let’s use the same example as we saw previously. However this time, the counter is simply an object containing:
+
+a count property
+an increment method that increments the value of count by one
+a decrement method that decrements the value of count by one
+
+*/
+
+//Pure JS implementation to acheive same result
+
+
+const counterJS = {
+	countJS : 0,
+	increment(){
+		return ++this.countJS;
+	},
+	decrement() {
+    return --this.countJS;
+  	}
+}
+
+counterJS.increment();
+counterJS.increment();
+counterJS.decrement();
+counterJS.increment();
+console.log(counterJS.countJS);
