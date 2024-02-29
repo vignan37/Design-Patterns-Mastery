@@ -195,3 +195,11 @@ counterJS.increment();
 counterJS.decrement();
 counterJS.increment();
 console.log(counterJS.countJS);
+
+/*
+Resources :
+
+https://www.patterns.dev/vanilla/singleton-pattern
+https://www.freecodecamp.org/news/the-basic-design-patterns-all-developers-need-to-know/
+
+*/
