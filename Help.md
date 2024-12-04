@@ -1,0 +1,1 @@
+To run JS files, run node filename.js
