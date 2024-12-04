@@ -13,3 +13,9 @@ https://refactoring.guru/design-patterns/catalog
 https://www.freecodecamp.org/news/the-basic-design-patterns-all-developers-need-to-know/
 
 https://www.patterns.dev/#patterns
+
+Books :
+
+Head first design patterns : https://amzn.to/3ZlVlvR
+
+Design Patterns by GoF : https://amzn.to/4eWMjLD
